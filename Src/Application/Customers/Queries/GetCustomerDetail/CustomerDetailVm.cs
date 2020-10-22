@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Northwind.Application.Common.Mappings;
 using Northwind.Domain.Entities;
+using System;
+using System.Collections.Generic;
 
 namespace Northwind.Application.Customers.Queries.GetCustomerDetail
 {
@@ -17,6 +19,13 @@ namespace Northwind.Application.Customers.Queries.GetCustomerDetail
         public string Phone { get; set; }
         public string PostalCode { get; set; }
         public string Region { get; set; }
+
+
+        // The list of Orders is used for demonstrating over-fetching
+        // and should not be included in this viewmodel under
+        // normal circumstances.
+
+        //public List<Order> Orders { get; set; } = new List<Order>();
 
         public void Mapping(Profile profile)
         {
