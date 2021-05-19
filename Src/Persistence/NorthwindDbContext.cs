@@ -50,6 +50,8 @@ namespace Northwind.Persistence
 
         public DbSet<Territory> Territories { get; set; }
 
+        public DbSet<Test> Tests { get; set; }
+
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             ChangeTracker.DetectChanges();
