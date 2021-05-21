@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>Northwind365.Client</PackageId>
+    <Authors>Matt Goldman</Authors>
+    <Company>SSW</Company>
+    <Product>Northwind365</Product>
+    <Description>Client package class library for consuming the Northwind365 API in C# client applications</Description>
+    <Copyright>2021 SSW</Copyright>
+    <PackageProjectUrl>https://northwind365.com/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/SSWConsulting/Northwind365</RepositoryUrl>
+    <PackageIcon>SSW_Logo.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\Matt\Downloads\SSW_Logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
