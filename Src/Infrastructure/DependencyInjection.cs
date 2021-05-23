@@ -72,7 +72,8 @@ namespace Northwind.Infrastructure
 
                 services.AddIdentityServer()
                     .AddApiAuthorization<ApplicationUser, ApplicationDbContext>()
-                    .AddSigningCredential(signingCert);
+                    .AddDeveloperSigningCredential();
+                    //.AddSigningCredential(signingCert);
             }
 
             services.AddAuthentication()
