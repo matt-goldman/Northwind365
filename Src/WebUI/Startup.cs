@@ -32,6 +32,11 @@ namespace Northwind.WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            if(Environment.IsProduction())
+            {
+                services.AddApplicationInsightsTelemetry();
+            }
+
             services.AddInfrastructure(Configuration, Environment);
             services.AddPersistence(Configuration);
             services.AddApplication();
