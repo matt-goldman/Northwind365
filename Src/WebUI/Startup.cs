@@ -91,7 +91,9 @@ namespace Northwind.WebUI
             app.UseHealthChecks("/health");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
+            
+            // TODO: re-enable when Blazor app added
+            // app.UseSpaStaticFiles();
 
             app.UseOpenApi();
 
