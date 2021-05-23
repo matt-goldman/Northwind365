@@ -13,6 +13,7 @@ using Northwind.Application;
 using Northwind.Application.Common.Interfaces;
 using Northwind.WebUI.Common;
 using Northwind.WebUI.Services;
+using System;
 
 namespace Northwind.WebUI
 {
@@ -32,6 +33,24 @@ namespace Northwind.WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var idsConfig = Configuration.GetSection("IdentityServer");
+
+            Console.WriteLine("Identity server configuration:");
+
+            var idsChildren = idsConfig.GetChildren();
+
+            foreach(var child in idsChildren)
+            {
+                if(child.Key == "Key")
+                {
+                    var grandchildren = child.GetChildren();
+                    foreach (var grandchild in grandchildren)
+                    {
+                        Console.WriteLine($"{grandchild.Key}: {grandchild.Value}");
+                    }
+                }
+            }
+
             services.AddApplicationInsightsTelemetry();
 
             services.AddInfrastructure(Configuration, Environment);

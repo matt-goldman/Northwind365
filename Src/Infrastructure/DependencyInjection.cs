@@ -13,6 +13,7 @@ using Northwind.Application.Common.Interfaces;
 using Northwind.Common;
 using Northwind.Infrastructure.Files;
 using Northwind.Infrastructure.Identity;
+using Northwind.Infrastructure.Services;
 
 namespace Northwind.Infrastructure
 {
@@ -59,8 +60,19 @@ namespace Northwind.Infrastructure
             }
             else
             {
+                services.AddSingleton<KeyvaultSecretsProvider>();
+
+                string KeyVaultCertName = configuration.GetValue<string>(nameof(KeyVaultCertName));
+
+                var sp = services.BuildServiceProvider();
+
+                var kvService = sp.GetRequiredService<KeyvaultSecretsProvider>();
+
+                var signingCert = kvService.GetCertificate(KeyVaultCertName).GetAwaiter().GetResult();
+
                 services.AddIdentityServer()
-                    .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
+                    .AddApiAuthorization<ApplicationUser, ApplicationDbContext>()
+                    .AddSigningCredential(signingCert);
             }
 
             services.AddAuthentication()
